@@ -5,7 +5,9 @@ Demo of an Effective Dashboard Using shinydashboard
 ---------------------------------------------------
 
 **Purpose**: a demo of shinydashboard package during AMIA Joint Summits 2015 Workshop  "Visualizing Operational Informatics Data and KPIs Using R"
+
 **Authors**: Leslie McIntosh, PhD; Kanstantsyia (Connie) Zabarouskaya, MBA; 
+
 **Developer**: Kanstantsyia (Connie) Zabarouskaya (GitHub ConnieZ) 
 Center for Biomedical Informatics
 Washington University in St. Louis
