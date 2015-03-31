@@ -1,0 +1,1865 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Visualizing Business Analytics in Biomedical Informatics</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Visualizing Business Analytics in Biomedical Informatics">
+  <meta name="author" content="Leslie McIntosh, Connie Zabarovskaya">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  <script src="libraries/widgets/highcharts/js/jquery-1.9.1.min.js"></script>
+<script src="libraries/widgets/highcharts/js/highcharts.js"></script>
+<script src="libraries/widgets/highcharts/js/highcharts-more.js"></script>
+<script src="libraries/widgets/highcharts/js/exporting.js"></script>
+
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+      <slide class="nobackground">
+    <article class="flexbox vcenter">
+      <span>
+        <img width='300px' src="assets/img/wustl.jpg">
+      </span>
+    </article>
+  </slide>
+    <slide class="title-slide segue nobackground" style="background:grey;" >
+  <hgroup class="auto-fadein">
+    <h1 style="color:white">Visualizing Business Analytics in Biomedical Informatics</h1>
+    <h2>AMIA Joint Summits 2015 Workshop</h2>
+    <p style="color:white">Leslie McIntosh, Connie Zabarovskaya<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Workshop Sponsors</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>We would like to thank our sponsors.</p>
+
+<p>ICTS for NIH CTSA Grant #UL1 TR000448</p>
+
+<p>Alvin J. Siteman Cancer Center, Grant # P30CA091842</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Goals of the Workshop</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>After this workshop you will be able to:</p>
+
+<ul>
+<li>Discuss the main principles of efficient data visualization</li>
+<li>Explain the meaning and purpose of Grammar of Graphics </li>
+<li>Identify and analyze Key Performance Indicators with the goal of providing actionable insights</li>
+<li>Build charts using rCharts package for R</li>
+<li>Develop Shiny apps and dashboards, and implement rCharts inside these apps</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Principles of Efficient Data Visualization</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Principle 1: For data visualization in general - build around a story (quote Dona Wong)</p>
+
+<ul>
+<li>Graphs and charts are not meant for decoration, they must deliver a clear message</li>
+</ul>
+
+<div align="center">
+  <img src="assets/img/NapoleonTroopChart.jpg", width = 1000, height = 400 >
+  </div>
+  
+
+<p>by Charles Joseph Minard</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Principle 2</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Limit visualization to a few highlights, don&#39;t overload with color, shapes, text</p>
+
+<div align="center">
+  <img src="assets/img/clutteredchart.png", width = 850, height = 450>
+  </div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>Principle 3</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Choose appropriate display media</p>
+
+<div align="center">
+  <img src="assets/img/pie_charts_vs_bar_charts_1.png">
+  </div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>Principle 3</h2>
+  </hgroup>
+  <article data-timings="">
+    <div align="center">
+  <img src="assets/img/pie_charts_vs_bar_charts_2.png">
+  </div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h2>Choice of Charts</h2>
+  </hgroup>
+  <article data-timings="">
+    <div align="center">
+  <img src="assets/img/Stephen_Few_unsuitable.png">
+  </div>
+
+<p>Stephen Few&#39;s advice on choice of charts</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-8" style="background:;">
+  <article data-timings="">
+    <div align="center">
+  <img src="assets/img/Stephen_Few_suitable3.png">
+  </div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h2>A note about Gauges and Bullet Graphs</h2>
+  </hgroup>
+  <article data-timings="">
+    <div align="center">
+  <img src="assets/img/domo-example.png"  >
+  <img src="assets/img/bullet-graph.jpg" >
+  </div>
+
+<p><br><br><br><br><br></p>
+
+<p>Gauge example from Domo <a href="http://www.domo.com/roles/operations">http://www.domo.com/roles/operations</a>
+vs. a bullet chart</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h2>Charting Exercise</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>You have 30 seconds to draw this relationship in a chart with the goal to deliver a clear message
+You need a piece of paper and a pen/pencil</p>
+
+<p><h3>Spending on Grants by US Goverment in 2014</h2></p>
+
+<table><thead>
+<tr>
+<th>State</th>
+<th align="center">Dollars (bln)</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Missouri</td>
+<td align="center">7.9</td>
+</tr>
+<tr>
+<td>California</td>
+<td align="center">55.0</td>
+</tr>
+<tr>
+<td>Texas</td>
+<td align="center">33.4</td>
+</tr>
+</tbody></table>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>Common Methods in KPI Development</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>brainstorming</li>
+<li>adoption from other organizations or benchmarking</li>
+<li>using existing measures </li>
+<li>measures enforced by stakeholders or executives</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h2>Correct Method</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Source: Stacey Barr (<a href="http://staceybarr.com/">http://staceybarr.com/</a>)</p>
+
+<ul class = "build incremental">
+<li>focus on desired results (derived from goals and objectives)</li>
+<li>how these results are different from what is now</li>
+<li>quantify and qualify the differences</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    <h2>The Result</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>few measures that are clear, actionable and have the team buy-in</li>
+<li>measures are used in decision making </li>
+<li>measures are used to track progress over time towards the strategic result</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-14" style="background:;">
+  <hgroup>
+    <h2>Common pitfalls of KPIs</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>data unaccessible</li>
+<li>no consistency or clarity in measurement</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-15" style="background:;">
+  <hgroup>
+    <h2>CBMI Example</h2>
+  </hgroup>
+  <article data-timings="">
+    <div align="center">
+  <img src="assets/img/CBMI-example.png">
+  </div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-16" style="background:;">
+  <hgroup>
+    <h2>KPIs and Dashboard Design</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Main pricinples of dashboard design by Stephen Few</p>
+
+<ul>
+<li>7 +/- 2 elements</li>
+<li>one screen, no scrolling</li>
+<li>a dashboard is a utility not a piece of art -&gt; little embellishments</li>
+<li>mild color-, pattern- encoding </li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-17" style="background:;">
+  <hgroup>
+    <h2>Examples of poor dashboards</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>1 and 2 are from iDashboards Pharmaceuticals demo</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-18" style="background:;">
+  <article data-timings="">
+    <div align="center">
+  <img src="assets/img/idashboards-example1.png" height="600" width="1000">
+  </div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-19" style="background:;">
+  <article data-timings="">
+    <div align="center">
+  <img src="assets/img/idashboards-example2.png" height="600" width="1000">
+  </div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-20" style="background:;">
+  <article data-timings="">
+    <div align="center">
+  <img src="assets/img/clicdata-example.png" height="600" width="1000">
+  </div>
+
+<p>Example from Clicdata demo</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-21" style="background:;">
+  <article data-timings="">
+    <div align="center">
+  <img src="assets/img/an_executive_dashboard.png" height="600" width="1000">
+  </div>
+
+<p>Another example with gauges</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-22" style="background:;">
+  <hgroup>
+    <h3>Example of a dashboard by Stephen Few</h3>
+  </hgroup>
+  <article data-timings="">
+    <div align="center">
+  <img src="assets/img/stephen_dashboard.png" height="550" width="950">
+  </div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-23" style="background:;">
+  <hgroup>
+    <h2>Brief Intro to Grammar of Graphics</h2>
+  </hgroup>
+  <article data-timings="">
+    <div align="center">
+  <img src="assets/img/grammarofgraphics.png" >
+  </div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-24" style="background:;">
+  <hgroup>
+    <h2>What is R?</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>open-source programming language, first developed for statistical analyses on the foundation of S language</li>
+<li>massively contributed to for over 20 years (NOTE: 2 years older than Java or JavaScript) by 2 million users and thousands of developers worldwide</li>
+<li>over 5000 packages in statistics, data management and analysis, API with databases, websites and software tools, data visualization and more</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-25" style="background:;">
+  <hgroup>
+    <h2>A little about rCharts</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>rCharts is an R package to create, customize and publish interactive JavaScript visualizations </li>
+<li>Developed by Ramnath Vaidyanathan, creator of Slidify</li>
+<li>uses a familiar lattice style plotting interface</li>
+<li>R code is converted to JavaScript on the back end, see it when you type </li>
+</ul>
+
+<pre><code>mychart$print()
+</code></pre>
+
+<ul>
+<li>rCharts by itself is interactive to a point, but within a Shiny app it allows input and modification of data in the chart</li>
+<li>Installation: </li>
+</ul>
+
+<pre><code>require(devtools) 
+install_github(&#39;rCharts&#39;, &#39;ramnathv&#39;) 
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-26" style="background:;">
+  <hgroup>
+    <h2>Working with rCharts</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Load the package, using library()</li>
+<li>Prepare data</li>
+<li>Create plot as is or assign it to a variable (latter will allow reusing it as a self-contained object)</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-27" style="background:;">
+  <hgroup>
+    <h1>Interactive Chart</h1>
+  </hgroup>
+  <article data-timings="">
+    <div id = 'chart1' class = 'rChart highcharts'></div>
+
+<script type='text/javascript'>
+    (function($){
+        $(function () {
+            var chart = new Highcharts.Chart({
+ "dom": "chart1",
+"width":            800,
+"height":            400,
+"credits": {
+ "href": null,
+"text": null 
+},
+"exporting": {
+ "enabled": false 
+},
+"title": {
+ "text": "Most Popular Product" 
+},
+"yAxis": [
+ {
+ "title": {
+ "text": "uniquePIs" 
+} 
+} 
+],
+"series": [
+ {
+ "data": [
+ [
+ "BioMS",
+8 
+],
+[
+ "caTissue",
+33 
+],
+[
+ "CDS (PES)",
+1 
+],
+[
+ "CIDER",
+72 
+],
+[
+ "ClinPortal",
+63 
+],
+[
+ "CPTAC",
+1 
+],
+[
+ "HealthStreet",
+1 
+],
+[
+ "Other",
+5 
+],
+[
+ "RPR-ClinPortal",
+5 
+] 
+],
+"type": "column",
+"marker": {
+ "radius":              3 
+} 
+} 
+],
+"legend": {
+ "enabled": false 
+},
+"xAxis": [
+ {
+ "title": {
+ "text": "Application" 
+},
+"categories": [ "BioMS", "caTissue", "CDS (PES)", "CIDER", "ClinPortal", "CPTAC", "HealthStreet", "Other", "RPR-ClinPortal" ] 
+} 
+],
+"subtitle": {
+ "text": null 
+},
+"chart": {
+ "height":            350,
+"renderTo": "chart1" 
+},
+"id": "chart1" 
+});
+        });
+    })(jQuery);
+</script>
+
+<pre><code class="r">library(rCharts); library(plyr)
+merged &lt;- read.csv(&quot;data/merged.csv&quot;)
+PI_by_product &lt;- ddply(merged, c(&quot;Application&quot;), summarise, uniquePIs = length(unique(PI_name)))
+mostPopularProduct &lt;- hPlot(uniquePIs ~ Application, type = &quot;column&quot;, data = PI_by_product, 
+                            title = &quot;Most Popular Product&quot;)
+mostPopularProduct
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-28" style="background:;">
+  <hgroup>
+    <h2>Data for the Interactive Chart above</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">knitr::kable(head(merged, 4))
+</code></pre>
+
+<table><thead>
+<tr>
+<th align="right">id</th>
+<th align="left">created</th>
+<th align="left">status</th>
+<th align="left">title</th>
+<th align="left">PI_name</th>
+<th align="left">FundingType</th>
+<th align="left">Application</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="right">1</td>
+<td align="left">7/24/2014 11:32</td>
+<td align="left">Closed</td>
+<td align="left">Project 44</td>
+<td align="left">Elvis Daniels</td>
+<td align="left">NA</td>
+<td align="left">BioMS</td>
+</tr>
+<tr>
+<td align="right">2</td>
+<td align="left">8/15/2014 9:52</td>
+<td align="left">Closed</td>
+<td align="left">Project 330</td>
+<td align="left">Scott Lott</td>
+<td align="left">NA</td>
+<td align="left">BioMS</td>
+</tr>
+<tr>
+<td align="right">3</td>
+<td align="left">9/4/2014 12:30</td>
+<td align="left">Closed</td>
+<td align="left">Project 470</td>
+<td align="left">Cassidy Griffith</td>
+<td align="left">NA</td>
+<td align="left">BioMS</td>
+</tr>
+<tr>
+<td align="right">4</td>
+<td align="left">3/12/2014 10:51</td>
+<td align="left">Closed</td>
+<td align="left">Project 477</td>
+<td align="left">Mollie Chang</td>
+<td align="left">NA</td>
+<td align="left">BioMS</td>
+</tr>
+</tbody></table>
+
+<pre><code class="r">knitr::kable(head(PI_by_product, 4))
+</code></pre>
+
+<table><thead>
+<tr>
+<th align="left">Application</th>
+<th align="right">uniquePIs</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">BioMS</td>
+<td align="right">8</td>
+</tr>
+<tr>
+<td align="left">caTissue</td>
+<td align="right">33</td>
+</tr>
+<tr>
+<td align="left">CDS (PES)</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="left">CIDER</td>
+<td align="right">72</td>
+</tr>
+</tbody></table>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-29" style="background:;">
+  <hgroup>
+    <h2>Popular rCharts libraries:</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Polychart (rPlot() function for basic, but powerful charts, inspired by ggplot2)</li>
+<li>Morris (mPlot() function for pretty time-series line graphs)</li>
+<li>NVD3 (nPlot() function based on d3js library for amazing interactive visualizations with little code and customization)</li>
+<li>xCharts (xPlot() function for slick looking charts using d3js, made by TenXer)</li>
+<li>HighCharts (hPlot() function interactive charts, time series graphs and map charts)</li>
+<li>Leaflet (Leaflet$new() function for mobile-friendly interactive maps)</li>
+<li>Rickshaw (Rickshaw$new() function for creating interactive time series graphs, developed at Shutterstock)</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-30" style="background:;">
+  <hgroup>
+    <h2>Line Chart with Customization</h2>
+  </hgroup>
+  <article data-timings="">
+    <div id = 'chart2' class = 'rChart highcharts'></div>
+
+<script type='text/javascript'>
+    (function($){
+        $(function () {
+            var chart = new Highcharts.Chart({
+ "dom": "chart2",
+"width":            800,
+"height":            400,
+"credits": {
+ "href": null,
+"text": null 
+},
+"exporting": {
+ "enabled": false 
+},
+"title": {
+ "text": "Adoption of Products and Services" 
+},
+"yAxis": [
+ {
+ "title": {
+ "text": "PIs" 
+},
+"labels": {
+ "style": {
+ "color": "#000066",
+"fontWeight": "bold" 
+} 
+},
+"min":              0,
+"gridLineColor": "#ffffff" 
+} 
+],
+"series": [
+ {
+ "data": [
+ [
+  1349049600000,
+             6 
+],
+[
+  1351728000000,
+             7 
+],
+[
+  1354320000000,
+             9 
+],
+[
+  1356998400000,
+            12 
+],
+[
+  1359676800000,
+            14 
+],
+[
+  1362096000000,
+            17 
+],
+[
+  1367366400000,
+            19 
+],
+[
+  1370044800000,
+            21 
+],
+[
+  1372636800000,
+            25 
+],
+[
+  1375315200000,
+            28 
+],
+[
+  1377993600000,
+            33 
+],
+[
+  1380585600000,
+            36 
+],
+[
+  1383264000000,
+            38 
+],
+[
+  1385856000000,
+            39 
+],
+[
+  1388534400000,
+            45 
+],
+[
+  1391212800000,
+            47 
+],
+[
+  1393632000000,
+            52 
+],
+[
+  1396310400000,
+            58 
+],
+[
+  1398902400000,
+            72 
+],
+[
+  1401580800000,
+            78 
+],
+[
+  1404172800000,
+           108 
+],
+[
+  1406851200000,
+           133 
+],
+[
+  1409529600000,
+           143 
+],
+[
+  1412121600000,
+           144 
+],
+[
+  1414800000000,
+           147 
+],
+[
+  1417392000000,
+           150 
+],
+[
+  1420070400000,
+           153 
+],
+[
+  1422748800000,
+           155 
+],
+[
+  1425168000000,
+           155 
+] 
+],
+"type": "line",
+"marker": {
+ "radius":              3 
+} 
+} 
+],
+"legend": {
+ "enabled": false 
+},
+"xAxis": [
+ {
+ "type": "datetime",
+"title": {
+ "text": "Time" 
+} 
+} 
+],
+"subtitle": {
+ "text": null 
+},
+"plotOptions": {
+ "line": {
+ "color": "#6699FF",
+"marker": {
+ "enabled": false 
+} 
+} 
+},
+"tooltip": {
+ "dateTimeLabelFormats": {
+ "month": "%B %Y" 
+} 
+},
+"chart": {
+ "zoomType": "x",
+"height":            500,
+"renderTo": "chart2" 
+},
+"id": "chart2" 
+});
+        });
+    })(jQuery);
+</script>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-31" style="background:;">
+  <hgroup>
+    <h1>Code for Line Chart</h1>
+  </hgroup>
+  <article data-timings="">
+    <pre><code>#function to convert the date format into suitable for rCharts
+to_jsdate2 &lt;- function(x){
+  as.numeric(as.POSIXct(as.Date(x), origin=&quot;1970-01-01&quot;)) * 1000
+}
+#we use the same &quot;merged&quot; dataset from the previous example
+#change the date columns format to Date
+merged$created &lt;- as.Date(merged$created, format = &quot;%m/%d/%Y %H:%M&quot;)
+
+#sort the data by date
+merged &lt;- merged[order(merged$created),]
+
+#create a month variable for aggregation
+merged$created_month &lt;- as.Date(cut(merged$created, &quot;month&quot;))
+
+#create a vector with cumulative sum of unique PIs
+unique_PIs &lt;- cummax(as.numeric(factor(merged$PI_name, levels = unique(merged$PI_name))))
+
+#matching cumulative sum of unique PIs to unique months
+PI_cumul_growth &lt;- aggregate(unique_PIs, list(Month=merged$created_month), max)
+
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-32" style="background:;">
+  <hgroup>
+    <h1>Code for Line Chart (cont.)</h1>
+  </hgroup>
+  <article data-timings="">
+    <p>How the PI_cumul_growth dataset looks like</p>
+
+<pre><code class="r">knitr::kable(head(merged[,c(&quot;created&quot;,&quot;PI_name&quot;, &quot;created_month&quot;)], 4))
+</code></pre>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="left">created</th>
+<th align="left">PI_name</th>
+<th align="left">created_month</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">928</td>
+<td align="left">2012-10-09</td>
+<td align="left">Pearl Ball</td>
+<td align="left">2012-10-01</td>
+</tr>
+<tr>
+<td align="left">702</td>
+<td align="left">2012-10-18</td>
+<td align="left">Emily Roth</td>
+<td align="left">2012-10-01</td>
+</tr>
+<tr>
+<td align="left">708</td>
+<td align="left">2012-10-18</td>
+<td align="left">Cora Branch</td>
+<td align="left">2012-10-01</td>
+</tr>
+<tr>
+<td align="left">709</td>
+<td align="left">2012-10-18</td>
+<td align="left">Cora Branch</td>
+<td align="left">2012-10-01</td>
+</tr>
+</tbody></table>
+
+<pre><code class="r">knitr::kable(head(PI_cumul_growth, 4))
+</code></pre>
+
+<table><thead>
+<tr>
+<th align="left">Month</th>
+<th align="right">x</th>
+<th align="right">date</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">2012-10-01</td>
+<td align="right">6</td>
+<td align="right">1.349050e+12</td>
+</tr>
+<tr>
+<td align="left">2012-11-01</td>
+<td align="right">7</td>
+<td align="right">1.351728e+12</td>
+</tr>
+<tr>
+<td align="left">2012-12-01</td>
+<td align="right">9</td>
+<td align="right">1.354320e+12</td>
+</tr>
+<tr>
+<td align="left">2013-01-01</td>
+<td align="right">12</td>
+<td align="right">1.356998e+12</td>
+</tr>
+</tbody></table>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-33" style="background:;">
+  <hgroup>
+    <h1>Code for Line Chart (cont.)</h1>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">#change the date format to suit rCharts
+PI_cumul_growth$date &lt;- to_jsdate2(as.Date(PI_cumul_growth$Month))
+#plot a line chart
+PI_growth_plot &lt;- hPlot(x ~ date, type = &quot;line&quot;, data = PI_cumul_growth)
+PI_growth_plot$title(text = &quot;Adoption of Products and Services&quot;)
+PI_growth_plot$xAxis(type=&#39;datetime&#39;, title = list(text = &quot;Time&quot;))
+PI_growth_plot$yAxis(title = list(text = &quot;PIs&quot;), 
+                        labels = list(style=list(color= &#39;#000066&#39;, fontWeight= &#39;bold&#39;)),
+                        min = 0, gridLineColor = &quot;#ffffff&quot;)
+PI_growth_plot$plotOptions(line = list(color = &quot;#6699FF&quot;, marker = list(enabled = F)))
+PI_growth_plot$tooltip(dateTimeLabelFormats = list(month = &quot;%B %Y&quot;))
+PI_growth_plot$chart(zoomType=&quot;x&quot;)
+PI_growth_plot
+
+#if you wish to get rid of &quot;Series 1&quot; in tooltip use this instead of the line with hPlot() 
+PI_growth_plot &lt;- Highcharts$new()
+PI_growth_plot$series(name = &quot;PIs&quot;, data = toJSONArray2(PI_cumul_growth[,c(&quot;date&quot;, &quot;x&quot;)], 
+                    json = F, names = F))
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-34" style="background:;">
+  <hgroup>
+    <h1>Bullet Graphs with R</h1>
+  </hgroup>
+  <article data-timings="">
+    <p>Not in rCharts yet.
+Find the working source code and info here: <a href="https://github.com/sipemu/BulletGraph">https://github.com/sipemu/BulletGraph</a>
+Developed by Simon Muller, who is also working on: <a href="https://github.com/sipemu/d3Dashboard">https://github.com/sipemu/d3Dashboard</a></p>
+
+<pre><code class="r">#load the source code into memory to make use of the functions
+source(&quot;helpers/BulletGraphSipemu.txt&quot;)
+
+#create a dataframe with all the parameters - for two bullet graphs
+bulletLoggedHours &lt;- data.frame(measure = c(&quot;Logged This Month&quot;, &quot;Logged Last Month&quot;),
+                                units = c(&quot;Hours&quot;, &quot;Hours&quot;),
+                                low = c(100, 100),
+                                mean = c(averagePerMonth, averagePerMonth),
+                                high = c(1825,1825),
+                                target = c(1522, 1522), 
+                                value = c(sum(thisMonthloggedHours$hourslogged), 
+                                          lastMonthLoggedHours))
+#run the horizontal bullet graph function 
+gridBulletGraphH(bulletLoggedHours, nticks=c(10, 10), 
+                             format=c(&quot;s&quot;,&quot;s&quot;), bcol=c(&quot;#6699CC&quot;, &quot;#85ADD6&quot;, &quot;#C2D6EB&quot;), font=11,
+                             scfont=9, ptitle=&quot;Logged Hours (Monthly Target = 1522)&quot;)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-35" style="background:;">
+  <hgroup>
+    <h2>Publishing rCharts</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Ways to share:</p>
+
+<ul>
+<li>Standalone html page (publish to gist.github.com or rpubs.com), the link is returned. Can be updated. Gist allows several files to be uploaded.</li>
+<li>Within Shiny Application (functions renderChart &amp; showOutput)</li>
+<li>Embed into rmd doc, using knit2html, or into a blog post using slidify</li>
+<li>To publish on gist, use your GitHub acount username and password at the prompt after this command executes:
+<code>PI_growth_plot$publish(&#39;Product Adoption Growth&#39;, host = &#39;gist&#39;)</code></li>
+<li>To publish on RPubs, use your account info and tweak RProfile if necessary (see here: <a href="http://rpubs.com/conniez/ufo_rchart):">http://rpubs.com/conniez/ufo_rchart):</a>
+<code>PI_growth_plot$publish(&#39;Product Adoption Growth&#39;, host = &#39;rpubs&#39;)</code></li>
+<li>Some commands for working with Shiny and Shinyapps.io
+<code>
+runApp(&quot;myapp&quot;)
+library(shinyapps)
+deployApp(&quot;myapp&quot;)
+</code></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-36" style="background:;">
+  <hgroup>
+    <h2>Why Build a Dashboard in R?</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Raw data is often messy (include cleaning and prepping processes in R)</li>
+<li>R was designed around statistics (prediction models, complex analyses)</li>
+<li>R allows connecting to most databases (except perhaps the newest)</li>
+<li>invalidateLater(), reactivePoll() functions in Shiny app</li>
+<li>No limit to graphical tools (any chart is possible)</li>
+<li>Control layout with shinydashboard or ShinyGridster </li>
+<li>Stylesheets supported (unlimited style and UI customization)</li>
+<li>absolute freedom of design, analyses and no restraints over layout and form</li>
+<li>Host locally, on Shiny Server (Pro) or shinyapps.io</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-37" style="background:;">
+  <hgroup>
+    <h1>Examples of Dashboards and Similar Apps Built in R</h1>
+  </hgroup>
+  <article data-timings="">
+    <div align="center">
+  <img src="assets/img/webanalytics_dash.png" height="500" width="1000">
+  </div>
+  
+
+<p>Source: <a href="https://mcpasin.shinyapps.io/WebAnalytics-Dashboard">https://mcpasin.shinyapps.io/WebAnalytics-Dashboard</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-38" style="background:;">
+  <hgroup>
+    <h1>Examples of Dashboards and Similar Apps Built in R</h1>
+  </hgroup>
+  <article data-timings="">
+    <div align="center">
+  <img src="assets/img/ga-effect_dashboard.png" height="550" width="900">
+  </div>
+  
+
+<p>Source: <a href="http://markedmondson.me/how-i-made-ga-effect-creating-an-online-statistics-dashboard-using-reais">http://markedmondson.me/how-i-made-ga-effect-creating-an-online-statistics-dashboard-using-reais</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-39" style="background:;">
+  <hgroup>
+    <h1>Examples of Dashboards and Similar Apps Built in R</h1>
+  </hgroup>
+  <article data-timings="">
+    <div align="center">
+  <img src="assets/img/police-planning.png" height="500" width="1000">
+  </div>
+  
+
+<p>Source: <a href="https://smartinsightsfromdata.shinyapps.io/TSupplyDemand/">https://smartinsightsfromdata.shinyapps.io/TSupplyDemand/</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-40" style="background:;">
+  <hgroup>
+    <h1>Basic Template of a Shiny App with rCharts</h1>
+  </hgroup>
+  <article data-timings="">
+    <pre><code># ui.R
+library(rCharts)
+shinyUI(fluidPage(
+  h2(&quot;rCharts Example&quot;),
+  sliderInput(&quot;slider&quot;, &quot;Number of observations:&quot;, 1, 1200, 500),
+  showOutput(&quot;myChart&quot;, &quot;highcharts&quot;)))
+</code></pre>
+
+<pre><code># server.R
+library(rCharts)
+library(plyr)
+merged &lt;- read.csv(&quot;data/merged.csv&quot;)
+shinyServer(function(input, output) {
+  output$myChart &lt;- renderChart({
+    PIs_by_product &lt;- ddply(head(merged, input$slider), c(&quot;Application&quot;), summarise,
+                           uniquePIs = length(unique(PI_name)))
+    mostPopularProduct &lt;- hPlot(uniquePIs ~ Application, type = &quot;column&quot;, 
+                                data = PIs_by_product, title = &quot;Most Popular Product&quot;)
+    mostPopularProduct$addParams(dom = &quot;myChart&quot;)
+    return(mostPopularProduct)    
+  })})
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-41" style="background:;">
+  <hgroup>
+    <h2>shinydasboard package</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>developed by Winston Chang (<a href="mailto:winston@rstudio.com">winston@rstudio.com</a>)</li>
+<li>find source files here: <a href="http://rstudio.github.io/shinydashboard/index.html">http://rstudio.github.io/shinydashboard/index.html</a></li>
+<li>usage: 2 files - ui.R and server.R</li>
+</ul>
+
+<pre><code># ui.R
+library(shinydashboard)
+library(shiny)
+dashboardPage(
+  dashboardHeader(# title of dashboard),
+  dashboardSidebar(# code for sidebar tabs  ),
+  dashboardBody(# tabs corresponding to sidebar code, boxes with charts  )
+)
+# server.R
+# put here code, executed only when first time run
+shinyServer(
+  function(input, output) {
+    # code for charts, code will be run once per visit; inside render..() or reactive() func - reactive runs
+  })
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-42" style="background:;">
+  <hgroup>
+    <h2>Demo Dashboard</h2>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-43" style="background:;">
+  <hgroup>
+    <h2>Resources Used (on KPIs, rCharts and Shiny)</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Stacey Bar, Performance Measurement Process: <a href="http://staceybarr.com/">http://staceybarr.com/</a></li>
+<li>Stephen Few. Information Dashboard Design: Displaying Data for At-a-Glance Monitoring: <a href="http://www.amazon.com/Information-Dashboard-Design-At-Glance/dp/1938377001/ref=pd_sim_b_3?ie=UTF8&amp;refRID=1CZ30V5X6TCQGHEQ719J">http://www.amazon.com/Information-Dashboard-Design-At-Glance/dp/1938377001/ref=pd_sim_b_3?ie=UTF8&amp;refRID=1CZ30V5X6TCQGHEQ719J</a></li>
+<li>Dona Wong, Guide to Information Graphics: <a href="http://donawong.com/">http://donawong.com/</a></li>
+<li>Getting Started: <a href="http://ramnathv.github.io/rCharts/">http://ramnathv.github.io/rCharts/</a></li>
+<li>What happens behind the scenes: <a href="http://rcharts.io/howitworks/">http://rcharts.io/howitworks/</a> </li>
+<li>Presentation on how to share: <a href="http://rcharts.io/NYC_May_2014/slides/02_share/#5">http://rcharts.io/NYC_May_2014/slides/02_share/#5</a></li>
+<li>Examples by creator: <a href="http://ramnathv.github.io/rChartsShiny/">http://ramnathv.github.io/rChartsShiny/</a></li>
+<li>Example of shiny app with downloading data from internet: <a href="https://github.com/ramnathv/rChartsShiny/blob/gh-pages/rChartOECD/global.R">https://github.com/ramnathv/rChartsShiny/blob/gh-pages/rChartOECD/global.R</a></li>
+<li>Great examples of all types of charts in NVD3: <a href="http://ramnathv.github.io/posts/rcharts-nvd3/index.html">http://ramnathv.github.io/posts/rcharts-nvd3/index.html</a></li>
+<li>Great examples with Highcharts: <a href="http://rpubs.com/kohske/12409">http://rpubs.com/kohske/12409</a> (and this one <a href="http://rstudio-pubs-static.s3.amazonaws.com/16699_4bc388ebe1454c84aaab3d22d17e3aaf.html">http://rstudio-pubs-static.s3.amazonaws.com/16699_4bc388ebe1454c84aaab3d22d17e3aaf.html</a>)</li>
+<li>What chart to use when: <a href="http://timelyportfolio.github.io/rCharts_nvd3_systematic/cluster_weights.html">http://timelyportfolio.github.io/rCharts_nvd3_systematic/cluster_weights.html</a></li>
+<li>Examples from Ramnath NVD3: <a href="https://github.com/ramnathv/rCharts/blob/master/inst/libraries/nvd3/examples.R">https://github.com/ramnathv/rCharts/blob/master/inst/libraries/nvd3/examples.R</a></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-44" style="background:;">
+  <hgroup>
+    <h2>Resources Used (on rCharts and Shiny)</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>How to embed into Rmarkdown: <a href="http://bl.ocks.org/ramnathv/raw/8084330/">http://bl.ocks.org/ramnathv/raw/8084330/</a> (and this <a href="http://timelyportfolio.github.io/rCharts_share/showingoff.html">http://timelyportfolio.github.io/rCharts_share/showingoff.html</a>)</li>
+<li>A very detailed explanation on how to use Highcharts API for rCharts:<a href="http://reinholdsson.github.io/rcharts-highcharts-api-docs/">http://reinholdsson.github.io/rcharts-highcharts-api-docs/</a></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-45" style="background:;">
+  <hgroup>
+    <h2>THANK YOU! Questions?</h2>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-46" style="background:;">
+  <hgroup>
+    <h2>Extra Slides</h2>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-47" style="background:;">
+  <hgroup>
+    <h2>Things to Remember(rCharts)</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>In a shiny app use function: showOutput(&quot;myChart&quot;, &quot;polychart&quot;), where you specify the name of the output object and the name of the library in lowercase. </li>
+<li>Don&#39;t forget plot$addParams() and return() in the output element used to create rCharts in server.R file</li>
+<li>If you can&#39;t see your chart in Viewer of Rstudio, try opening it in browser by clicking the Open in Browser button.</li>
+<li>Sometimes, if a chart doesn&#39;t show up in a Shiny app with several rCharts, you may have to use this &quot;wrapping&quot; trick (not necessary if you use shinydashboard):</li>
+</ul>
+
+<pre><code>div(class=&#39;wrapper&#39;, tags$style(&quot;.highcharts{ height: 100%; width: 800px;}&quot;),
+showOutput(&quot;infChart&quot;, &quot;highcharts&quot;))
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-48" style="background:;">
+  <hgroup>
+    <h2>rCharts API</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>A lot of the &quot;properties&quot; of the plot object can be customized. All you need to do is get access to the documentation of the rChart library or the original JavaScript library.</p>
+
+<p>To demonstrate the depth of possible customization, we will use an example Highcharts JavaScript library, using their Reference page: <a href="http://api.highcharts.com/">http://api.highcharts.com/</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-49" style="background:;">
+  <hgroup>
+    <h2>Highcharts API Example</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Below are the casual &quot;rules&quot; of conversion for HighCharts.</p>
+
+<ul>
+<li>the elements of a chart are in an object in JS, that gets converted into a list in R; the main object properties will look like this, e.g. <code>mychart$chart()</code> or <code>mychart$plotOptions()</code></li>
+<li>these main properties have nested properties, and if the property you customize doesn&#39;t have more nested properties (chart: {height: 800}), then use &quot;=&quot; to simply assign that value to a parameter in R, e.g. <code>mychart$chart(height = 800)</code></li>
+<li><p>if the properties you&#39;re attemting to customize have any &quot;nested&quot; properties - use &quot;=&quot; to assign a list() inside of which you will put what is &quot;nested&quot;, e.g.</p>
+
+<p><code>mychart$plotOptions(column = (dataLabels = list(enabled=TRUE)))</code></p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-50" style="background:;">
+  <hgroup>
+    <h2>Highcharts API (Cont.)</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The following demonstration will make these &quot;rules&quot; much clearer.</p>
+
+<p><img width = 1000, src="assets/img/conversion.png" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-51" style="background:;">
+  <hgroup>
+    <h2>Example of Customization</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The following example just scratches the surface of all the things you can do in rCharts.</p>
+
+<script type='text/javascript' src=//code.jquery.com/jquery-1.9.1.min.js></script>
+
+<script type='text/javascript' src=//code.highcharts.com/highcharts.js></script>
+
+<script type='text/javascript' src=//code.highcharts.com/highcharts-more.js"></script>
+
+<script type='text/javascript' src=//code.highcharts.com/modules/exporting.js></script> 
+
+<p><style>
+  .rChart {
+    display: block;
+    margin-left: auto; 
+    margin-right: auto;
+    width: 800px;
+    height: 400px;
+  }<br>
+  </style></p>
+
+<div id = 'chart10a427fd54ce' class = 'rChart highcharts'></div>
+
+<script type='text/javascript'>
+    (function($){
+        $(function () {
+            var chart = new Highcharts.Chart({
+ "dom": "chart10a427fd54ce",
+"width":            800,
+"height":            400,
+"credits": {
+ "href": null,
+"text": null 
+},
+"exporting": {
+ "enabled": false 
+},
+"title": {
+ "text": "Quantity of Fruits Collected by Children" 
+},
+"yAxis": [
+ {
+ "title": {
+ "text": "Quantity of Fruits" 
+},
+"tickInterval":              2 
+} 
+],
+"series": [
+ {
+ "data": [
+ [
+ "Alice",
+            15 
+],
+[
+ "Andy",
+            20 
+],
+[
+ "John",
+            23 
+],
+[
+ "Sam",
+            10 
+] 
+],
+"name": "Apples",
+"type": "column",
+"marker": {
+ "radius":              3 
+} 
+},
+{
+ "data": [
+ [
+ "Alice",
+             4 
+],
+[
+ "Andy",
+            10 
+],
+[
+ "John",
+             5 
+],
+[
+ "Sam",
+             8 
+] 
+],
+"name": "Oranges",
+"type": "column",
+"marker": {
+ "radius":              3 
+} 
+} 
+],
+"xAxis": [
+ {
+ "title": {
+ "text": "Name of Child" 
+},
+"type": "category",
+"labels": {
+ "rotation":             60,
+"align": "left" 
+} 
+} 
+],
+"subtitle": {
+ "text": null 
+},
+"chart": {
+ "height":            500,
+"zoomType": "xy",
+"renderTo": "chart10a427fd54ce" 
+},
+"colors": [ "#339900", "#FF9900" ],
+"plotOptions": {
+ "column": {
+ "stacking": "normal",
+"dataLabels": {
+ "enabled": true,
+"align": "center",
+"verticalAlign": "top",
+"color": "#FFFFFF",
+"y":             10 
+} 
+} 
+},
+"legend": {
+ "align": "center",
+"verticalAlign": "top",
+"y":             30,
+"margin":             20 
+},
+"id": "chart10a427fd54ce" 
+});
+        });
+    })(jQuery);
+</script>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-52" style="background:;">
+  <hgroup>
+    <h2>Code for the Demo</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code>fruits&lt;-data.frame(name = c(&quot;John&quot;, &quot;Alice&quot;, &quot;Andy&quot;, &quot;Sam&quot;, &quot;John&quot;, &quot;Alice&quot;, &quot;Andy&quot;, &quot;Sam&quot;), 
+quant = c(23, 15, 20, 10, 5, 4, 10, 8), 
+fruit = c(rep(&quot;Apples&quot;, 4), rep(&quot;Oranges&quot;, 4)))
+
+samplePlot&lt;- hPlot(quant ~ name, data = fruits, group = &quot;fruit&quot;, type = &#39;column&#39;, 
+                   title = &quot;Quantity of Fruits Collected by Children&quot;)
+samplePlot$xAxis(title = list(text=&quot;Name of Child&quot;), type = &quot;category&quot;, labels = list
+                 (rotation = 60, align = &quot;left&quot;))
+samplePlot$chart(height = 500, zoomType = &quot;xy&quot;)
+samplePlot$colors(&quot;#339900&quot;, &quot;#FF9900&quot;)
+samplePlot$plotOptions(column = list(stacking = &quot;normal&quot;, dataLabels = list(enabled = T, 
+                              align = &#39;center&#39;, verticalAlign = &quot;top&quot;, 
+                              color = &#39;#FFFFFF&#39;, y = 10)))
+samplePlot$yAxis(title = list(text = &quot;Quantity of Fruits&quot;), tickInterval = 2)
+samplePlot$legend(align = &#39;center&#39;, verticalAlign = &#39;top&#39;, y = 30, margin = 20)
+samplePlot
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Workshop Sponsors'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Goals of the Workshop'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Principles of Efficient Data Visualization'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Principle 2'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Principle 3'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='Principle 3'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='Choice of Charts'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title=''>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='A note about Gauges and Bullet Graphs'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='Charting Exercise'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='Common Methods in KPI Development'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='Correct Method'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='The Result'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='Common pitfalls of KPIs'>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='CBMI Example'>
+         15
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='KPIs and Dashboard Design'>
+         16
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title='Examples of poor dashboards'>
+         17
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=18 title=''>
+         18
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=19 title=''>
+         19
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=20 title=''>
+         20
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=21 title=''>
+         21
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=22 title='Example of a dashboard by Stephen Few'>
+         22
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=23 title='Brief Intro to Grammar of Graphics'>
+         23
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=24 title='What is R?'>
+         24
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=25 title='A little about rCharts'>
+         25
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=26 title='Working with rCharts'>
+         26
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=27 title='Interactive Chart'>
+         27
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=28 title='Data for the Interactive Chart above'>
+         28
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=29 title='Popular rCharts libraries:'>
+         29
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=30 title='Line Chart with Customization'>
+         30
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=31 title='Code for Line Chart'>
+         31
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=32 title='Code for Line Chart (cont.)'>
+         32
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=33 title='Code for Line Chart (cont.)'>
+         33
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=34 title='Bullet Graphs with R'>
+         34
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=35 title='Publishing rCharts'>
+         35
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=36 title='Why Build a Dashboard in R?'>
+         36
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=37 title='Examples of Dashboards and Similar Apps Built in R'>
+         37
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=38 title='Examples of Dashboards and Similar Apps Built in R'>
+         38
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=39 title='Examples of Dashboards and Similar Apps Built in R'>
+         39
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=40 title='Basic Template of a Shiny App with rCharts'>
+         40
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=41 title='shinydasboard package'>
+         41
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=42 title='Demo Dashboard'>
+         42
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=43 title='Resources Used (on KPIs, rCharts and Shiny)'>
+         43
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=44 title='Resources Used (on rCharts and Shiny)'>
+         44
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=45 title='THANK YOU! Questions?'>
+         45
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=46 title='Extra Slides'>
+         46
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=47 title='Things to Remember(rCharts)'>
+         47
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=48 title='rCharts API'>
+         48
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=49 title='Highcharts API Example'>
+         49
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=50 title='Highcharts API (Cont.)'>
+         50
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=51 title='Example of Customization'>
+         51
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=52 title='Code for the Demo'>
+         52
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
