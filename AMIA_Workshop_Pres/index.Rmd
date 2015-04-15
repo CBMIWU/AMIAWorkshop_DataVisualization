@@ -112,7 +112,7 @@ vs. a bullet chart
 You have 30 seconds to draw this relationship in a chart with the goal to deliver a clear message
 You need a piece of paper and a pen/pencil
 
-<h3>Spending on Grants by US Goverment in 2014</h2>
+<h3>Spending on Grants by US Government in 2014</h2>
 
 | State         | Dollars (bln) |
 | ------------- |:-------------:| 
@@ -154,7 +154,7 @@ Source: Stacey Barr (http://staceybarr.com/)
 
 ## Common pitfalls of KPIs
 
-* data unaccessible
+* data inaccessible
 * no consistency or clarity in measurement
 
 ---
@@ -169,7 +169,7 @@ Source: Stacey Barr (http://staceybarr.com/)
 
 ## KPIs and Dashboard Design
 
-Main pricinples of dashboard design by Stephen Few
+Main principles of dashboard design by Stephen Few
 - 7 +/- 2 elements
 - one screen, no scrolling
 - a dashboard is a utility not a piece of art -> little embellishments
@@ -454,7 +454,7 @@ Ways to share:
 * Standalone html page (publish to gist.github.com or rpubs.com), the link is returned. Can be updated. Gist allows several files to be uploaded.
 * Within Shiny Application (functions renderChart & showOutput)
 * Embed into rmd doc, using knit2html, or into a blog post using slidify
-* To publish on gist, use your GitHub acount username and password at the prompt after this command executes:
+* To publish on gist, use your GitHub account username and password at the prompt after this command executes:
 ```PI_growth_plot$publish('Product Adoption Growth', host = 'gist')```
 * To publish on RPubs, use your account info and tweak RProfile if necessary (see here: http://rpubs.com/conniez/ufo_rchart):
 ```PI_growth_plot$publish('Product Adoption Growth', host = 'rpubs')```
@@ -634,7 +634,7 @@ Below are the casual "rules" of conversion for HighCharts.
 
 * the elements of a chart are in an object in JS, that gets converted into a list in R; the main object properties will look like this, e.g. `mychart$chart()` or `mychart$plotOptions()`
 * these main properties have nested properties, and if the property you customize doesn't have more nested properties (chart: {height: 800}), then use "=" to simply assign that value to a parameter in R, e.g. `mychart$chart(height = 800)`
-* if the properties you're attemting to customize have any "nested" properties - use "=" to assign a list() inside of which you will put what is "nested", e.g.
+* if the properties you're attempting to customize have any "nested" properties - use "=" to assign a list() inside of which you will put what is "nested", e.g.
 
   `mychart$plotOptions(column = (dataLabels = list(enabled=TRUE)))`
 

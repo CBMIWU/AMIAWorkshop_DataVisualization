@@ -13,7 +13,11 @@
     media="only screen and (max-device-width: 480px)" >
   <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
   <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
-  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="libraries/widgets/nvd3/css/nv.d3.css"></link>
+<link rel=stylesheet href="libraries/widgets/nvd3/css/rNVD3.css"></link>
+<link rel=stylesheet href="libraries/widgets/rickshaw/css/rickshaw.min.css"></link>
+<link rel=stylesheet href="libraries/widgets/rickshaw/css/jquery-ui.css"></link>
+<link rel=stylesheet href="./assets/css/ribbons.css"></link>
 
   
   <!-- Grab CDN jQuery, fall back to local if offline -->
@@ -23,10 +27,18 @@
     src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
   </script>
   
-  <script src="libraries/widgets/highcharts/js/jquery-1.9.1.min.js"></script>
+  <script src="libraries/widgets/nvd3/js/jquery-1.8.2.min.js"></script>
+<script src="libraries/widgets/nvd3/js/d3.v3.min.js"></script>
+<script src="libraries/widgets/nvd3/js/nv.d3.min-new.js"></script>
+<script src="libraries/widgets/nvd3/js/fisheye.js"></script>
+<script src="libraries/widgets/highcharts/js/jquery-1.9.1.min.js"></script>
 <script src="libraries/widgets/highcharts/js/highcharts.js"></script>
 <script src="libraries/widgets/highcharts/js/highcharts-more.js"></script>
 <script src="libraries/widgets/highcharts/js/exporting.js"></script>
+<script src="libraries/widgets/rickshaw/js/d3.v2.min.js"></script>
+<script src="libraries/widgets/rickshaw/js/rickshaw.min.js"></script>
+<script src="libraries/widgets/rickshaw/js/jquery.min.js"></script>
+<script src="libraries/widgets/rickshaw/js/jquery-ui.min.js"></script>
 
 
 </head>
@@ -203,7 +215,7 @@ vs. a bullet chart</p>
     <p>You have 30 seconds to draw this relationship in a chart with the goal to deliver a clear message
 You need a piece of paper and a pen/pencil</p>
 
-<p><h3>Spending on Grants by US Goverment in 2014</h2></p>
+<p><h3>Spending on Grants by US Government in 2014</h2></p>
 
 <table><thead>
 <tr>
@@ -283,7 +295,7 @@ You need a piece of paper and a pen/pencil</p>
   </hgroup>
   <article data-timings="">
     <ul>
-<li>data unaccessible</li>
+<li>data inaccessible</li>
 <li>no consistency or clarity in measurement</li>
 </ul>
 
@@ -309,7 +321,7 @@ You need a piece of paper and a pen/pencil</p>
     <h2>KPIs and Dashboard Design</h2>
   </hgroup>
   <article data-timings="">
-    <p>Main pricinples of dashboard design by Stephen Few</p>
+    <p>Main principles of dashboard design by Stephen Few</p>
 
 <ul>
 <li>7 +/- 2 elements</li>
@@ -1070,7 +1082,7 @@ gridBulletGraphH(bulletLoggedHours, nticks=c(10, 10),
 <li>Standalone html page (publish to gist.github.com or rpubs.com), the link is returned. Can be updated. Gist allows several files to be uploaded.</li>
 <li>Within Shiny Application (functions renderChart &amp; showOutput)</li>
 <li>Embed into rmd doc, using knit2html, or into a blog post using slidify</li>
-<li>To publish on gist, use your GitHub acount username and password at the prompt after this command executes:
+<li>To publish on gist, use your GitHub account username and password at the prompt after this command executes:
 <code>PI_growth_plot$publish(&#39;Product Adoption Growth&#39;, host = &#39;gist&#39;)</code></li>
 <li>To publish on RPubs, use your account info and tweak RProfile if necessary (see here: <a href="http://rpubs.com/conniez/ufo_rchart):">http://rpubs.com/conniez/ufo_rchart):</a>
 <code>PI_growth_plot$publish(&#39;Product Adoption Growth&#39;, host = &#39;rpubs&#39;)</code></li>
@@ -1329,7 +1341,7 @@ showOutput(&quot;infChart&quot;, &quot;highcharts&quot;))
 <ul>
 <li>the elements of a chart are in an object in JS, that gets converted into a list in R; the main object properties will look like this, e.g. <code>mychart$chart()</code> or <code>mychart$plotOptions()</code></li>
 <li>these main properties have nested properties, and if the property you customize doesn&#39;t have more nested properties (chart: {height: 800}), then use &quot;=&quot; to simply assign that value to a parameter in R, e.g. <code>mychart$chart(height = 800)</code></li>
-<li><p>if the properties you&#39;re attemting to customize have any &quot;nested&quot; properties - use &quot;=&quot; to assign a list() inside of which you will put what is &quot;nested&quot;, e.g.</p>
+<li><p>if the properties you&#39;re attempting to customize have any &quot;nested&quot; properties - use &quot;=&quot; to assign a list() inside of which you will put what is &quot;nested&quot;, e.g.</p>
 
 <p><code>mychart$plotOptions(column = (dataLabels = list(enabled=TRUE)))</code></p></li>
 </ul>
