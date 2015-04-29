@@ -1,7 +1,6 @@
 #server.R
 
 library(rCharts)
-#two libraries for the bullet graph
 library(htmlwidgets)
 library(plyr)
 library(grid)
@@ -37,8 +36,6 @@ PI_cumul_growth$new_pi_num <- c(PI_cumul_growth$x[1], (tail(PI_cumul_growth$x, -
 
 shinyServer(
   function(input, output) {
-    set.seed(122)
-    histdata <- rnorm(500)
     
     output$PI_growth <- renderChart({
       
